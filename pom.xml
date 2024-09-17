@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <!-- Vaadin project from https://github.com/vaadin/skeleton-starter-flow-spring -->
     <groupId>com.example</groupId>
@@ -21,6 +21,10 @@
     </parent>
 
     <repositories>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
         <repository>
             <id>Vaadin Directory</id>
             <url>https://maven.vaadin.com/vaadin-addons</url>
@@ -100,10 +104,12 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.4</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>itext7-core</artifactId>
-            <version>7.2.3</version> <!-- Make sure to use the latest stable version -->
+            <artifactId>itext-core</artifactId>
+            <version>8.0.5</version>
+            <type>pom</type>
         </dependency>
         <!-- MongoDB Spring Data dependency -->
         <dependency>
@@ -201,6 +207,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>3.1.2</version>
                         <executions>
                             <execution>
                                 <goals>

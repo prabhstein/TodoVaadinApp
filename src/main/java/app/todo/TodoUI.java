@@ -71,10 +71,14 @@ public class TodoUI extends VerticalLayout implements HasUrlParameter<String> {
 
         // Register broadcast listener
         var ui = attachEvent.getUI();
-        broadcastRegistration = Broadcastor.register((message) -> ui.access(() -> {
-            refreshView();
-            Notification.show(message);
-        }));
+        broadcastRegistration = Broadcastor.register((message) -> {
+            if (ui.isAttached()) {
+                ui.access(() -> {
+                    refreshView();
+                    Notification.show(message);
+                });
+            }
+        });
     }
 
     private void initializeHeader() {
