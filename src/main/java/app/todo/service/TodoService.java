@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TodoService {
@@ -26,16 +25,16 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
-    public Optional<Todo> getTodoById(String id) {
-        return todoRepository.findById(id);
+    public List<Todo> getAllTodosByUserId(String userId) {
+        return todoRepository.findByUserId(userId);
     }
 
     public Todo saveTodo(Todo todo) {
         return todoRepository.save(todo);
     }
 
-    public void deleteTodoById(String id) {
-        todoRepository.deleteById(id);
+    public void deleteTodo(Todo todo) {
+        todoRepository.delete(todo);
     }
 
     public List<GridFSFile> getAllFiles() {
@@ -43,5 +42,9 @@ public class TodoService {
         List<GridFSFile> fileList = new ArrayList<>();
         files.forEach(fileList::add);
         return fileList;
+    }
+
+    public void deleteAllFiles() {
+        todoRepository.deleteAll();
     }
 }

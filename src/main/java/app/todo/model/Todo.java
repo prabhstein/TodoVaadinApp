@@ -17,5 +17,6 @@ public class Todo {
     private String title;
     private String body;
     private String author;
+    private String userId;
     private LocalDateTime createdAt;
 }
